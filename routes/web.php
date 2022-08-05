@@ -18,14 +18,23 @@ Route::get('/', function () {
 });
 
 
-Route::get('/store', function () {
-    $filter = request('style');
-    if(isset($filter)){
-        return 'wach '.$filter.'</p>';
+// Route::get('/store', function () {
+//     $filter = request('style');
+//     if(isset($filter)){
+//         return 'wach '.$filter.'</p>';
 
+//     }
+//     return 'wach abnadam  ';
+
+// });
+
+Route::get('/store/{categorie?}/{item?}',function($categorie = null,$item = null){
+    if(isset($categorie)){
+
+        if(isset($item)){
+            return '<h1>'.$categorie.' '.$item.'</h1>';
+        }
+        return "<h1>{$categorie}</h1>";
     }
-    return 'wach abnadam ';
-
+    return '<h1>nom prenom </h1>';
 });
-
-
