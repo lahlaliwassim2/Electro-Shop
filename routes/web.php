@@ -16,3 +16,16 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+
+Route::get('/store', function () {
+    $filter = request('style');
+    if(isset($filter)){
+        return 'wach '.$filter.'</p>';
+
+    }
+    return 'wach abnadam ';
+
+});
+
+
