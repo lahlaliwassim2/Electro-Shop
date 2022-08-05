@@ -1,7 +1,8 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
 
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\StaticController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,9 +14,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [StaticController::class, 'index'] );
 
 
 // Route::get('/store', function () {
