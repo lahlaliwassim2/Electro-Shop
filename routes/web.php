@@ -15,6 +15,8 @@ use App\Http\Controllers\StaticController;
 */
 
 Route::get('/', [StaticController::class, 'index'] );
+Route::get('/about ', [StaticController::class, 'about'] );
+Route::get('/contact ', [StaticController::class, 'contact'] );
 
 
 // Route::get('/store', function () {
