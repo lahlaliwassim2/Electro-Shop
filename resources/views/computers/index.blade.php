@@ -9,7 +9,7 @@
             <div class="mt-8">
               <ul>@foreach ($computers as $computer )
                 <a href="{{ route('computers.show' , ['computer' => $computer['id']]) }}">
-                <li>{{ $computer['name'] }} </li>
+                <li>{{ $computer['name'] }} - {{ $computer['origin'] }} - {{ $computer['price'] }} </li>
                 @endforeach
             </a>
               </ul>
