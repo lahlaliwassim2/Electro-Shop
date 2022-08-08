@@ -11,17 +11,33 @@
         <!-- CROSS SITE REQUEST FORGERY-->
         <div>
             <label for="" class="text-sm">computer Name</label>
-            <input type="text" class="text-lg border-1 " id="computer-name" name="computer-name">
+            <input type="text" class="text-lg border-1 " value="{{old('computer-name')}}" id="computer-name" name="computer-name">
+            @error('computer-name')
+                     <div class="form-error"> {{$message}}</div>
+            @enderror
         </div>
+
+
         <div>
             <label for="" class="text-sm">computer Origin</label>
-            <input type="text" class="text-lg border-1 " id="computer-origin" name="computer-origin">
+            <input type="text" class="text-lg border-1 " value="{{old('computer-origin')}}" id="computer-origin" name="computer-origin">
+            @error('computer-origin')
+            <div class="form-error"> {{$message}}</div>
+            @enderror
         </div>
+
+
+
         <div>
             <label for="" class="text-sm">Computer Price </label>
-            <input type="text" class="text-lg border-1 " id="computer-price" name="computer-price">
+            <input type="text" class="text-lg border-1 " value="{{old('computer-price')}}" id="computer-price" name="computer-price">
+            @error('computer-price')
+            <div class="form-error"> {{$message}}</div>
+            @enderror
         </div>
             <div>
+
+
                 <button type="submit"> submit</button>
             </div>
        </form>
