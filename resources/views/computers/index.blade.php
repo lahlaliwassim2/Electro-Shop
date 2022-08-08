@@ -7,7 +7,12 @@
                 <h1>Computers</h1>
             </div>
             <div class="mt-8">
-                THIS IS THE computers PAGE
+              <ul>@foreach ($computers as $computer )
+                <a href="{{ route('computers.show' , ['computer' => $computer['id']]) }}">
+                <li>{{ $computer['name'] }} </li>
+                @endforeach
+            </a>
+              </ul>
             </div>
         </div>
 @endsection
