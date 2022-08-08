@@ -6,7 +6,7 @@
         <h1>Computers</h1>
     </div>
     <div class="mt-8">
-       <h3>{{ $computer['name'] }} is from <strong>{{ $computer['origin'] }}</strong></h3>
+       <h3>{{ $computer['name'] }} is from <strong>{{ $computer['origin'] }} -{{ $computer['price'] }}</strong></h3>
     </div>
 </div>
 @endsection
