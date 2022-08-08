@@ -9,5 +9,13 @@
        <h3>{{ $computer['name'] }} is from <strong>{{ $computer['origin'] }} -{{ $computer['price'] }}</strong></h3>
     </div>
     <a href="{{route('computers.edit',$computer->id)}}" class="edit-btn">edit</a>
+
+    <form action="{{route('computers.destroy',$computer->id)}}" method="POST" class="fd">
+        @csrf
+        @method('delete')
+
+        <input type="submit"  value="delete" class="delete-btn">
+    </form>
+
 </div>
 @endsection
