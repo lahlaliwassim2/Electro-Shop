@@ -1,6 +1,6 @@
 <?php
 
-
+use App\Http\Controllers\ComputerController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\StaticController;
 /*
@@ -19,15 +19,7 @@ Route::get('/about', [StaticController::class, 'about'])->name('home.about');
 Route::get('/contact', [StaticController::class, 'contact'])->name('home.contact');
 
 
-// Route::get('/store', function () {
-//     $filter = request('style');
-//     if(isset($filter)){
-//         return 'wach '.$filter.'</p>';
-
-//     }
-//     return 'wach abnadam  ';
-
-// });
+Route::resource('computers', ComputerController::class);
 
 Route::get('/store/{categorie?}/{item?}',function($categorie = null,$item = null){
     if(isset($categorie)){
