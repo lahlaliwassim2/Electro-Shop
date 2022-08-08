@@ -59,4 +59,13 @@ form button{
     text-decoration: underline;
     font-size: .8rem;
 }
+.delete-btn{
+    color: red;
+    text-decoration: underline;
+    font-size: .8rem;
+    background: none;
+    padding: 0;
+    border: none;
+}
+
 
