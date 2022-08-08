@@ -101,9 +101,12 @@ class ComputerController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($computer)
     {
         //
+        return view('computers.edit',[
+            'computer' => Computer::findOrFail($computer)
+        ]);
     }
 
     /**
@@ -113,9 +116,25 @@ class ComputerController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $computer)
     {
         //
+        $request->validate([
+            'computer-name' => 'required',
+            'computer-origin' =>'required',
+            'computer-price' => ['required','integer']  //or => 'required|integer';
+
+        ]);
+
+       $to_up =  Computer::FindOrFail($computer);
+       $to_up->name = strip_tags($request->input('computer-name')); //dryouruserinput
+       $to_up->origin = strip_tags($request->input('computer-origin'));
+       $to_up->price = strip_tags($request->input('computer-price'));
+
+       $to_up->save();
+       return redirect()->route('computers.show',$computer);
+
+
     }
 
     /**
