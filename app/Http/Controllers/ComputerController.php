@@ -8,13 +8,13 @@ use App\Models\Computer;
 class ComputerController extends Controller
 {
         //array of static data
-        private static function getData(){
-            return [
-                ['id' => 1 , 'name' => 'LG ' , 'origin' => 'Koria'],
-                ['id' => 2 , 'name' => 'HP ' , 'origin' => 'USA'],
-                ['id' =>3 , 'name' => 'Siemens ' , 'origin' => 'Germany']
-            ];
-        }
+        // private static function getData(){
+        //     // return [
+        //     //     ['id' => 1 , 'name' => 'LG ' , 'origin' => 'Koria'],
+        //     //     ['id' => 2 , 'name' => 'HP ' , 'origin' => 'USA'],
+        //     //     ['id' =>3 , 'name' => 'Siemens ' , 'origin' => 'Germany']
+        //     // ];
+        // }
 
 
 
@@ -57,11 +57,21 @@ class ComputerController extends Controller
 
     public function store(Request $request)
     {
-        //
+        //validation
+        $request->validate([
+            'computer-name' => 'required',
+            'computer-origin' =>'required',
+            'computer-price' => ['required','integer']  //or => 'required|integer';
+
+        ]);
+
+
+
+
         $computer = new Computer();
-        $computer->name = $request->input('computer-name');
-        $computer->origin = $request->input('computer-origin');
-        $computer->price = $request->input('computer-price');
+        $computer->name = strip_tags($request->input('computer-name')); //dryouruserinput
+        $computer->origin = strip_tags($request->input('computer-origin'));
+        $computer->price = strip_tags($request->input('computer-price'));
 
         $computer->save();
         return redirect()->route('computers.index');
@@ -77,13 +87,11 @@ class ComputerController extends Controller
     public function show($computer)
     {
         //
-            $computers = self::getData();
-            $index = array_search($computer, array_column($computers,'id'));
-            if($index === false){
-                abort(404);
-            }
+            $index = Computer::findOrFail($computer);
+
+
             return view('computers.show',[
-                'computer'=> $computers[$index]
+                'computer'=> $index
             ]);
     }
 
