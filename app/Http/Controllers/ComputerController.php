@@ -6,14 +6,31 @@ use Illuminate\Http\Request;
 
 class ComputerController extends Controller
 {
+        //array of static data
+        private static function getData(){
+            return [
+                ['id' => 1 , 'name' => 'LG ' , 'origin' => 'Koria'],
+                ['id' => 2 , 'name' => 'HP ' , 'origin' => 'USA'],
+                ['id' =>3 , 'name' => 'Siemens ' , 'origin' => 'Germany']
+            ];
+        }
+
+
+
+
     /**
+     *
+     *
+     *
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
     public function index()
     {
-        return view('computers.index');
+        return view('computers.index', [
+            'computers'=>self::getData()
+        ]);
     }
 
     /**
@@ -24,6 +41,7 @@ class ComputerController extends Controller
     public function create()
     {
         //
+        return view(('computers.create'));
     }
 
     /**
@@ -43,9 +61,17 @@ class ComputerController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($computer)
     {
         //
+            $computers = self::getData();
+            $index = array_search($computer, array_column($computers,'id'));
+            if($index === false){
+                abort(404);
+            }
+            return view('computers.show',[
+                'computer'=> $computers[$index]
+            ]);
     }
 
     /**
