@@ -54,4 +54,9 @@ form button{
     color: red;
     font-size: .8rem;
 }
+.edit-btn{
+    color: lightblue;
+    text-decoration: underline;
+    font-size: .8rem;
+}
 
