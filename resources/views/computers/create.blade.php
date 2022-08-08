@@ -6,7 +6,9 @@
         <h1>create a new Computers</h1>
     </div>
     <div class="flex justify-center ">
-       <form action="" method="POST" class="form bg-white p-6 border-1">
+       <form action="{{ route('computers.store') }}" method="POST" class="form bg-white p-6 border-1">
+        @csrf
+        <!-- CROSS SITE REQUEST FORGERY-->
         <div>
             <label for="" class="text-sm">computer Name</label>
             <input type="text" class="text-lg border-1 " id="computer-name" name="computer-name">
@@ -17,7 +19,7 @@
         </div>
         <div>
             <label for="" class="text-sm">Computer Price </label>
-            <input type="text" class="text-lg border-1 " id="computer-price" name="computer-prive">
+            <input type="text" class="text-lg border-1 " id="computer-price" name="computer-price">
         </div>
             <div>
                 <button type="submit"> submit</button>
